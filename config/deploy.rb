@@ -1,13 +1,17 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+set :use_sudo, false
 
-set :scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :user, "deployer"
+set :scm, :git
+set :application, "infrastructureapp"
+set :deploy_to, "/home/deployer/apps/#{application}"
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+# Use the public or private clone URL, if you have a public or private repository.
+set :repository,  "git://github.com/richardkmichael/infrastructureapp.git"
+# set :repository,  "git@github.com:richardkmichael/infrastructureapp.git"
+
+role :web, "ubuntu.home."
+role :app, "ubuntu.home."
+role :db,  "ubuntu.home.", :primary => true
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
