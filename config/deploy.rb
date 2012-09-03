@@ -13,6 +13,19 @@ role :web, "ubuntu.home."
 role :app, "ubuntu.home."
 role :db,  "ubuntu.home.", :primary => true
 
+# RVM settings.
+set :rvm_ruby_string, "ruby-1.9.3-p194@infrastructureapp"
+# set :rvm_install_type, :stable
+# set :rvm_install_ruby, :reinstall
+require "rvm/capistrano"
+before "deploy:setup", "rvm:install_rvm"
+before "deploy:setup", "rvm:install_ruby"
+
+# Optional settings.
+# set :branch, "production"
+# set :scm_passphrase, "github_password"
+# ssh_options[:forward_agent] = true # Keep ssh keys on the local machine.
+
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 
