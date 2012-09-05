@@ -1,3 +1,7 @@
+require "capistrano_colors"
+require "rvm/capistrano"
+require "bundler/capistrano"
+
 set :use_sudo, false
 
 set :user, "deployer"
@@ -17,9 +21,9 @@ role :db,  "ubuntu.home.", :primary => true
 set :rvm_ruby_string, "ruby-1.9.3-p194@infrastructureapp"
 # set :rvm_install_type, :stable
 # set :rvm_install_ruby, :reinstall
-require "rvm/capistrano"
 before "deploy:setup", "rvm:install_rvm"
 before "deploy:setup", "rvm:install_ruby"
+
 
 # Optional settings.
 # set :branch, "production"

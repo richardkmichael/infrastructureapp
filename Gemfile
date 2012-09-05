@@ -6,6 +6,7 @@ gem 'jquery-rails'
 
 group :development do
   gem 'capistrano'
+  gem 'capistrano_colors'
   gem 'rvm-capistrano'
 end
 
