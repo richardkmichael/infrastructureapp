@@ -15,6 +15,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  # Not required on MacOS, but good to have dev use the prod code path,
+  # and there is no (nice) way to exclude OS/hardware arches in bundler.
+  gem 'therubyracer', :platforms => :ruby
 end
